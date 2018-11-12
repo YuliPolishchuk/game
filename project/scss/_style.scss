@@ -1,0 +1,88 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: $font-stack;
+  background-color: $primary-color;
+}
+
+.font {
+  color: $text-color;
+  font-style: italic;
+  font-weight: 600;
+  font-size: $size-text;
+}
+
+.container {
+  display: grid;
+  width: $container-width;
+  grid-gap: $gap;
+  grid-template-columns: repeat(12, $item-wigth);
+  grid-template-rows:  repeat(5, $item-wigth);
+  margin: auto;
+  padding-top: 100px;
+}
+
+.item {
+  background-color: $color-block;
+  position: relative;
+  width: $item-wigth;
+  height: $item-wigth;
+}
+
+.item:hover {
+  background-color: $color-yellow;
+}
+
+.item:not(:hover) {
+  @include transition($time);
+}
+
+.check__label {
+  position: absolute;
+  right: 200px;
+  font-size: $size-text;
+  top:35px;
+}
+
+.check__input {
+  position: absolute;
+  bottom: 9999px;
+} 
+
+.check__label::before {
+	content: '';
+	height: 11px;
+  width: 11px;
+  background-color: #f0f0f0;
+  position: absolute;  
+  left: -25px;
+  top: 10px;
+}
+
+.check__input:checked + .check__label::before {
+  background-color: inherit;
+  border: 1px solid $color-yellow;
+  @include border-radius(50%);
+}
+
+.check__input:checked ~ .item {    
+  border: 1px solid $color-yellow;    
+  @include border-radius(50%);
+  background-color: inherit;
+  width: 110px;
+  height: 110px;
+  @include transition(0.5s);
+}
+
+.check__input:checked ~ .item:hover {
+  background-color: $color-yellow;
+  @include transition(0s);
+}
+
+.check__input:checked ~ .item:not(:hover) {
+  @include transition($time);
+}
