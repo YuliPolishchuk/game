@@ -1,2 +1,2 @@
-# SVG
-[LINK](https://YuliPolishchuk.github.io/project)
+# Game
+[LINk](https://YuliPolishchuk.github.io./game/project/)
